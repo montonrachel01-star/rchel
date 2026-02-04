@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JDS</title>
+
+<style>
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Grid Container Setup (3 columns) */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr; /* 1 narrow sidebar, 2 wide content columns */
+    gap: 15px;
+    padding: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+}
+
+/* Header - Spans all 3 columns */
+.site-header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: #2c3e50;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+}
+.site-header h1 {
+    margin-bottom: 10px;
+}
+.site-header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+.site-header a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar - Occupies 1st column */
+.content-sidebar {
+    grid-column: 1 / 2;
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+}
+.content-sidebar h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+.content-sidebar ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* Main Content - Occupies 2nd-3rd columns */
+.main-content {
+    grid-column: 2 / 4;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.main-content section {
+    margin-bottom: 30px;
+}
+.main-content h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+.main-content p {
+    line-height: 1.6;
+    color: #34495e;
+}
+
+/* Featured Photo - Spans full width of main content (2 columns) */
+.featured-photo {
+    grid-column: 1 / -1; /* Spans all columns within parent container */
+}
+.featured-photo-box img {
+    width: 100%;
+    height: auto; /* Maintains aspect ratio despite fixed HTML dimensions */
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* 3-Column Photo Gallery (Nested Grid) */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap: 15px;
+}
+.photo-gallery h2 {
+    grid-column: 1 / 4; /* Spans all 3 gallery columns */
+}
+.gallery-card {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.gallery-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+.photo-box img {
+    width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Footer - Spans all 3 columns */
+.site-footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+
+@media (max-width: 600px) {
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .aside {
+        position: relative;
+    }
+
+    .facts {
+        grid-column: span 1;
+    }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .facts {
+        grid-column: span 2;
+    }
+}
+
+
+@media (min-width: 1025px) {
+
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+    <!-- Main Grid Container -->
+    <div class="grid-container">
+        <!-- Header (spans all columns) -->
+        <header class="site-header">
+            <h1>My Photo & Design Portfolio</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Sidebar (1st column) -->
+        <aside class="content-sidebar">
+            <h3>Skills & Tools</h3>
+            <ul>
+                <li>Digital Photography</li>
+                <li>Adobe Photoshop</li>
+                <li>CSS Grid Layout</li>
+                <li>Responsive Design</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content (2nd-3rd columns) -->
+        <main class="main-content">
+            <section id="about">
+                <h2>About This Portfolio</h2>
+                <p>This page uses CSS Grid to organize content into a clean, responsive layout. Below you’ll find a curated gallery of my best work, with a featured piece that spans across all columns to highlight its importance.</p>
+            </section>
+
+            <!-- Featured Element (spans all columns) -->
+            <section class="featured-photo">
+                <h2>Featured Work: Coastal Landscape</h2>
+                <div class="featured-photo-box">
+                    <img src="C:\Users\Acer\OneDrive\画像\Acer\coastal-landscape-view-stockcake.webp" alt="Wide coastal landscape photo with sunset skies" loading="lazy">
+                </div>
+                <p>This award-winning shot captures the interplay of light and water, edited with custom color grading techniques.</p>
+            </section>
+
+            <!-- Photo Gallery (3 equal columns) -->
+            <section id="gallery" class="photo-gallery">
+                <h2>Portfolio Gallery</h2>
+                <!-- Project 1 Photo -->
+                <div class="gallery-card">
+                    <div class="photo-box">
+                        <img src="C:\Users\Acer\OneDrive\画像\Acer\sunrise-from-wetterhorn-peak-colorado-rocky-mountains-usa.jpg" alt="Mountain peak at sunrise" loading="lazy">
+                    </div>
+                    <h3>Alpine Dawn</h3>
+                    <p>Shot at 12,000ft elevation with a full-frame camera.</p>
+                </div>
+
+                <!-- Project 2 Photo -->
+                <div class="gallery-card">
+                    <div class="photo-box">
+                        <img src="C:\Users\Acer\OneDrive\画像\Acer\nick-sweetman-bees-garage.jpg" alt="Urban street art mural" loading="lazy">
+                    </div>
+                    <h3>City Canvas</h3>
+                    <p>Documentary-style photography of street art culture.</p>
+                </div>
+
+                <!-- Project 3 Photo -->
+                <div class="gallery-card">
+                    <div class="photo-box">
+                        <img src="C:\Users\Acer\OneDrive\画像\Acer\40070a_5c542bbe26674317880ea5b9631b896d~mv2.jpg" alt="Macro shot of tropical flower" loading="lazy">
+                    </div>
+                    <h3>Botanical Detail</h3>
+                    <p>Extreme close-up with specialized macro lens equipment.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer (spans all columns) -->
+        <footer class="site-footer">
+            <p>&copy; 2026 My Portfolio | Contact: hello@myportfolio.example | All photos are original work</p>
+        </footer>
+    </div>
+</body>
+</html>
